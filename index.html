@@ -99,7 +99,7 @@
     .nav-menu {
       display: flex;
       align-items: center;
-      gap: 2rem;
+      gap: 1.75rem;
     }
 
     .nav-link {
@@ -245,6 +245,8 @@
       border-radius: 6px;
       transition: all 0.2s ease;
       box-shadow: 0 2px 6px rgba(60, 110, 113, 0.2);
+      border: none;
+      cursor: pointer;
     }
 
     .btn-primary:hover {
@@ -519,10 +521,10 @@
       text-decoration: underline;
     }
 
-    /* SKILLS & COURSEWORK */
+    /* SKILLS & ARCHITECTURE (CLEAN 5 CARDS) */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 1.75rem;
     }
 
@@ -531,11 +533,12 @@
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 1.75rem;
-      transition: border-color 0.2s ease;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
     .skill-card:hover {
       border-color: var(--teal);
+      box-shadow: 0 4px 15px rgba(60, 110, 113, 0.08);
     }
 
     .skill-card h4 {
@@ -593,17 +596,19 @@
       border-radius: 6px;
     }
 
-    /* EDUCATION & ACADEMIC TABLE */
+    /* EDUCATION SECTION (FULL WIDTH RESPONSIVE) */
     .table-container {
       background: #ffffff;
       border: 1px solid var(--border);
       border-radius: 10px;
-      overflow: hidden;
+      overflow-x: auto;
       box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+      -webkit-overflow-scrolling: touch;
     }
 
     table {
       width: 100%;
+      min-width: 600px;
       border-collapse: collapse;
       text-align: left;
     }
@@ -632,34 +637,119 @@
       border-bottom: none;
     }
 
-    /* CERTIFICATIONS */
-    .cert-item {
-      padding: 1.15rem 1.25rem;
+    /* SEPARATE CERTIFICATIONS SECTION */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .cert-card {
       background: #ffffff;
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: 10px;
+      overflow: hidden;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.85rem;
-      transition: all 0.2s ease;
+      flex-direction: column;
+      transition: all 0.25s ease;
+      cursor: pointer;
     }
 
-    .cert-item:hover {
+    .cert-card:hover {
       border-color: var(--teal);
-      background: var(--bg-alt);
-      transform: translateX(4px);
+      box-shadow: 0 8px 24px rgba(60, 110, 113, 0.12);
+      transform: translateY(-3px);
     }
 
-    .cert-btn-pill {
+    .cert-preview-wrap {
+      height: 180px;
+      background: #1e293b;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cert-preview-wrap img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    .cert-card:hover .cert-preview-wrap img {
+      transform: scale(1.03);
+    }
+
+    .cert-badge-floating {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(255, 255, 255, 0.94);
+      color: var(--navy);
       font-family: var(--font-mono);
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 600;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    .cert-card-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .cert-issuer {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
       color: var(--teal);
+      margin-bottom: 0.35rem;
+    }
+
+    .cert-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 0.65rem;
+      line-height: 1.35;
+    }
+
+    .cert-desc {
+      font-size: 0.88rem;
+      color: var(--ink-muted);
+      line-height: 1.55;
+      margin-bottom: 1.25rem;
+      flex: 1;
+    }
+
+    .cert-action-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 0.55rem 1rem;
       background: rgba(60, 110, 113, 0.08);
       border: 1px solid var(--teal);
-      padding: 0.25rem 0.6rem;
-      border-radius: 4px;
+      color: var(--teal);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+      width: 100%;
+    }
+
+    .cert-card:hover .cert-action-btn {
+      background: var(--teal);
+      color: #ffffff;
     }
 
     /* CERTIFICATE MODAL WITH 5S TIMER */
@@ -672,7 +762,7 @@
       backdrop-filter: blur(6px);
       align-items: center;
       justify-content: center;
-      padding: 1.5rem;
+      padding: 1rem;
     }
 
     .cert-modal-overlay.show {
@@ -695,7 +785,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 1.5rem;
+      padding: 1rem 1.25rem;
       border-bottom: 1px solid var(--border);
       background: #fff;
     }
@@ -704,15 +794,17 @@
       font-size: 0.95rem;
       font-weight: 700;
       color: var(--navy);
+      padding-right: 1rem;
     }
 
     .cert-modal-close {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       background: transparent;
       border: none;
       color: var(--ink-muted);
       cursor: pointer;
       line-height: 1;
+      padding: 0.2rem;
     }
 
     .cert-modal-close:hover {
@@ -720,25 +812,25 @@
     }
 
     .cert-modal-body {
-      padding: 1.25rem;
+      padding: 1rem;
       display: flex;
       align-items: center;
       justify-content: center;
       background: #1e293b;
-      max-height: 72vh;
+      max-height: 70vh;
       overflow-y: auto;
     }
 
     .cert-modal-body img {
       max-width: 100%;
-      max-height: 68vh;
+      max-height: 65vh;
       object-fit: contain;
       border-radius: 4px;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
     }
 
     .cert-timer-wrap {
-      padding: 0.85rem 1.5rem;
+      padding: 0.85rem 1.25rem;
       background: var(--bg-alt);
       border-top: 1px solid var(--border);
       display: flex;
@@ -908,6 +1000,7 @@
       gap: 1.5rem;
       font-family: var(--font-mono);
       font-size: 0.82rem;
+      flex-wrap: wrap;
     }
 
     .footer-links a {
@@ -920,7 +1013,7 @@
       text-decoration: underline;
     }
 
-    /* RESPONSIVE */
+    /* MOBILE RESPONSIVE ENHANCEMENTS */
     @media (max-width: 900px) {
       .hero-section {
         grid-template-columns: 1fr;
@@ -928,9 +1021,28 @@
       }
       .contact-grid {
         grid-template-columns: 1fr;
+        gap: 2rem;
       }
       .nav-menu {
         display: none;
+      }
+      .project-grid, .skills-grid, .cert-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      section {
+        padding: 3.5rem 1.25rem;
+      }
+      .hero-name {
+        font-size: 2.2rem;
+      }
+      .form-card {
+        padding: 1.5rem;
+      }
+      .cert-card-body {
+        padding: 1.25rem;
       }
     }
   </style>
@@ -948,6 +1060,7 @@
         <a href="#projects" class="nav-link">Projects</a>
         <a href="#skills" class="nav-link">Skills</a>
         <a href="#education" class="nav-link">Education</a>
+        <a href="#certifications" class="nav-link">Certifications</a>
         <a href="#leadership" class="nav-link">Leadership</a>
         <a href="#contact" class="nav-link">Contact</a>
       </nav>
@@ -972,7 +1085,7 @@
       <div class="proof-banner">
         <span>⚡</span>
         <div>
-          <strong>GitHub-Verified Work:</strong> All projects below include schematics, firmware repositories, prebuilt binaries, and CAD files.
+          <strong>GitHub-Verified Work:</strong> All projects below include schematics, firmware repositories, prebuilt binaries, and progress reports.
           <a href="https://github.com/rushiwagh9423" target="_blank" rel="noopener">Explore GitHub profile ↗</a>
         </div>
       </div>
@@ -1134,7 +1247,7 @@
     </div>
   </section>
 
-  <!-- SKILLS & COURSEWORK SECTION (SEPARATED) -->
+  <!-- SKILLS & ARCHITECTURE SECTION (AUTHENTIC 5 CARDS) -->
   <section id="skills">
     <div class="section-inner">
       <div class="section-header">
@@ -1160,9 +1273,8 @@
           <ul>
             <li>• Python &amp; MicroPython</li>
             <li>• Arduino C / C++</li>
-            <li>• Logic &amp; Architecture First Design</li>
-            <li>• AI-Assisted ("Vibe") Code Generation</li>
-            <li>• Embedded State Machines &amp; Interrupts</li>
+            <li>• Circuit &amp; Logic-First Design</li>
+            <li>• AI-Assisted ("Vibe") Coding</li>
           </ul>
         </div>
 
@@ -1178,35 +1290,22 @@
         </div>
 
         <div class="skill-card">
-          <h4>CAD, Modeling &amp; PCB</h4>
+          <h4>PCB Design &amp; CAD</h4>
           <ul>
-            <li>• KiCad (Schematic Capture &amp; Layout)</li>
+            <li>• KiCad (Schematic Capture &amp; PCB Layout)</li>
             <li>• EasyEDA Circuit Modeling</li>
-            <li>• Autodesk Fusion 360 (CAD Modeling)</li>
-            <li>• FDM 3D Printing &amp; Mechanical Prototyping</li>
-            <li>• Gerber Export &amp; Manufacturing Design</li>
+            <li>• Gerber Export &amp; Fabrication Data</li>
           </ul>
         </div>
 
         <div class="skill-card">
-          <h4>Bench Testing &amp; Assembly</h4>
+          <h4>Lab Skills &amp; Bench Testing</h4>
           <ul>
             <li>• Component Soldering &amp; De-soldering</li>
             <li>• Digital Storage Oscilloscope Analysis</li>
             <li>• Precision Multimeter Measurements</li>
-            <li>• Circuit Debugging &amp; Voltage Probing</li>
-            <li>• Power Supply Rail Bring-up</li>
-          </ul>
-        </div>
-
-        <div class="skill-card">
-          <h4>Systems &amp; Software Extras</h4>
-          <ul>
-            <li>• Web Billing System (React, Tailwind, Firebase)</li>
-            <li>• x86 OS Kernel from Scratch (NASM, C, QEMU)</li>
-            <li>• Android App Development (Kotlin)</li>
-            <li>• Cloudflare Workers (Serverless Microservices)</li>
-            <li>• Git Version Control &amp; GitHub Actions</li>
+            <li>• Bench Circuit Debugging &amp; Testing</li>
+            <li>• Power Rail Bring-up</li>
           </ul>
         </div>
       </div>
@@ -1232,83 +1331,126 @@
     </div>
   </section>
 
-  <!-- EDUCATION & CERTIFICATIONS -->
+  <!-- EDUCATION SECTION (FULL WIDTH & FULLY RESPONSIVE) -->
   <section class="section-alt" id="education">
     <div class="section-inner">
       <div class="section-header">
         <div class="section-eyebrow">Academic Foundation</div>
-        <h2 class="section-title">Education &amp; Credentials.</h2>
+        <h2 class="section-title">Formal Education.</h2>
+        <p class="section-desc">Diploma in Electronics engineering fundamentals and Class 10 academic excellence.</p>
       </div>
 
-      <div style="display:grid; grid-template-columns: 1.2fr 0.8fr; gap:2.5rem; align-items:start;">
-        <div>
-          <div class="table-container">
-            <table>
-              <thead>
-                <tr>
-                  <th>Institution &amp; Program</th>
-                  <th>Timeline</th>
-                  <th>Academic Score</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <strong>Government Polytechnic Mumbai</strong><br>
-                    <span style="font-size:0.85rem; color:var(--ink-muted);">Diploma in Electronics</span><br>
-                    <span style="font-size:0.78rem; font-family:var(--font-mono); color:var(--teal);">Third Year In Progress (2026–27)</span>
-                  </td>
-                  <td style="font-family:var(--font-mono); font-size:0.85rem;">2024 – Present</td>
-                  <td>
-                    <div style="font-family:var(--font-mono); font-weight:700; color:var(--teal); margin-bottom:4px;">
-                      80%, 83%, 90%, 88%
-                    </div>
-                    <span style="font-size:0.75rem; color:var(--ink-muted);">Semesters 1 through 4</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <strong>Gurukul Public School, Baglan, Nashik</strong><br>
-                    <span style="font-size:0.85rem; color:var(--ink-muted);">Secondary School Certificate (SSC, Class 10)</span>
-                  </td>
-                  <td style="font-family:var(--font-mono); font-size:0.85rem;">2024</td>
-                  <td>
-                    <div style="font-family:var(--font-mono); font-weight:700; color:var(--teal);">
-                      90.00%
-                    </div>
-                    <span style="font-size:0.75rem; color:var(--ink-muted);">State Board Examination</span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Institution &amp; Program</th>
+              <th>Timeline</th>
+              <th>Academic Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <strong style="color:var(--charcoal); font-size:1rem;">Government Polytechnic Mumbai</strong><br>
+                <span style="font-size:0.88rem; color:var(--ink-muted);">Diploma in Electronics</span><br>
+                <span style="font-size:0.8rem; font-family:var(--font-mono); color:var(--teal); font-weight:600;">Third Year In Progress (2026–27)</span>
+              </td>
+              <td style="font-family:var(--font-mono); font-size:0.88rem; color:var(--navy); font-weight:600;">
+                2024 – Present
+              </td>
+              <td>
+                <div style="font-family:var(--font-mono); font-weight:700; font-size:1rem; color:var(--teal); margin-bottom:4px;">
+                  80%, 83%, 90%, 88%
+                </div>
+                <span style="font-size:0.78rem; color:var(--ink-muted);">Semesters 1 through 4 (Consistently 80–90%)</span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong style="color:var(--charcoal); font-size:1rem;">Gurukul Public School, Baglan, Nashik</strong><br>
+                <span style="font-size:0.88rem; color:var(--ink-muted);">Secondary School Certificate (SSC, Class 10)</span>
+              </td>
+              <td style="font-family:var(--font-mono); font-size:0.88rem; color:var(--navy); font-weight:600;">
+                2024
+              </td>
+              <td>
+                <div style="font-family:var(--font-mono); font-weight:700; font-size:1rem; color:var(--teal);">
+                  90.00%
+                </div>
+                <span style="font-size:0.78rem; color:var(--ink-muted);">State Board Examination</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEDICATED SEPARATE CERTIFICATIONS & SIMULATIONS SECTION -->
+  <section id="certifications">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-eyebrow">Industry Credentials</div>
+        <h2 class="section-title">Certifications &amp; Industry Simulations.</h2>
+        <p class="section-desc">Practical industry simulations and technical upskilling programs. Tap any card to view the official verified certificate.</p>
+      </div>
+
+      <div class="cert-grid">
+        <!-- Certificate 1: Qualcomm -->
+        <div class="cert-card" onclick="openCertTimer('qualcomm')">
+          <div class="cert-preview-wrap">
+            <img src="cert_qualcomm.png" alt="Qualcomm Academy AI Upskilling Certificate">
+            <span class="cert-badge-floating">June 2026</span>
+          </div>
+          <div class="cert-card-body">
+            <div class="cert-issuer">Qualcomm Academy</div>
+            <h3 class="cert-title">AI Upskilling: Hands-On Development from Model to App</h3>
+            <p class="cert-desc">
+              Comprehensive technical program covering the end-to-end workflow of bringing AI models into practical deployed applications on target edge hardware.
+            </p>
+            <button class="cert-action-btn">
+              <span>View Certificate (5s Auto-Close)</span>
+              <span>↗</span>
+            </button>
           </div>
         </div>
 
-        <div>
-          <h4 style="font-size:1.1rem; font-weight:700; margin-bottom:1rem; color:var(--navy);">Certifications &amp; Simulations</h4>
-          
-          <div class="cert-item" onclick="openCertTimer('qualcomm')" style="cursor:pointer;" title="Click to view full certificate (auto-closes in 5s)">
-            <div>
-              <div style="font-weight:700; font-size:0.92rem; color:var(--charcoal);">Qualcomm Academy AI Upskilling</div>
-              <div style="font-size:0.78rem; color:var(--ink-muted);">Hands-On Development from Model to App &bull; June 2026</div>
-            </div>
-            <span class="cert-btn-pill">View (5s) ↗</span>
+        <!-- Certificate 2: Johnson & Johnson MedTech -->
+        <div class="cert-card" onclick="openCertTimer('forage')">
+          <div class="cert-preview-wrap">
+            <img src="cert_forage.png" alt="Johnson & Johnson MedTech Robotics and Controls Certificate">
+            <span class="cert-badge-floating">June 2026</span>
           </div>
-
-          <div class="cert-item" onclick="openCertTimer('forage')" style="cursor:pointer;" title="Click to view full certificate (auto-closes in 5s)">
-            <div>
-              <div style="font-weight:700; font-size:0.92rem; color:var(--charcoal);">Johnson &amp; Johnson MedTech</div>
-              <div style="font-size:0.78rem; color:var(--ink-muted);">Robotics &amp; Controls Job Simulation (Forage) &bull; June 2026</div>
-            </div>
-            <span class="cert-btn-pill">View (5s) ↗</span>
+          <div class="cert-card-body">
+            <div class="cert-issuer">Johnson &amp; Johnson &bull; Forage</div>
+            <h3 class="cert-title">Robotics &amp; Controls Job Simulation</h3>
+            <p class="cert-desc">
+              Virtual simulation focusing on control systems engineering, surgical instrumentation principles, feedback loops, and medical technology compliance.
+            </p>
+            <button class="cert-action-btn">
+              <span>View Certificate (5s Auto-Close)</span>
+              <span>↗</span>
+            </button>
           </div>
+        </div>
 
-          <div class="cert-item" onclick="openCertTimer('siemens')" style="cursor:pointer;" title="Click to view full certificate (auto-closes in 5s)">
-            <div>
-              <div style="font-weight:700; font-size:0.92rem; color:var(--charcoal);">Siemens Project Manager Simulation</div>
-              <div style="font-size:0.78rem; color:var(--ink-muted);">Project Scheduling Simulation (Forage) &bull; Sept 2026</div>
-            </div>
-            <span class="cert-btn-pill">View (5s) ↗</span>
+        <!-- Certificate 3: Siemens -->
+        <div class="cert-card" onclick="openCertTimer('siemens')">
+          <div class="cert-preview-wrap">
+            <img src="cert_siemens.png" alt="Siemens Project Manager Simulation Certificate">
+            <span class="cert-badge-floating">Sept 2026</span>
+          </div>
+          <div class="cert-card-body">
+            <div class="cert-issuer">Siemens &bull; Forage</div>
+            <h3 class="cert-title">Project Manager Job Simulation</h3>
+            <p class="cert-desc">
+              Simulation covering engineering milestone scheduling, dependency mapping, risk mitigation, and structured cross-functional project management.
+            </p>
+            <button class="cert-action-btn">
+              <span>View Certificate (5s Auto-Close)</span>
+              <span>↗</span>
+            </button>
           </div>
         </div>
       </div>
@@ -1327,7 +1469,7 @@
       </div>
       <div class="cert-timer-wrap">
         <div class="cert-timer-text">
-          <span>Auto-closing in <strong id="certTimerCount">5</strong>s</span>
+          <span>Auto-closing in <strong id="certTimerCount" style="color:var(--teal);">5</strong>s</span>
           <span>Click outside or press ESC to return</span>
         </div>
         <div class="cert-timer-bar-track">
@@ -1338,7 +1480,7 @@
   </div>
 
   <!-- LEADERSHIP & COMPETITIONS -->
-  <section id="leadership">
+  <section class="section-alt" id="leadership">
     <div class="section-inner">
       <div class="section-header">
         <div class="section-eyebrow">Engineering Leadership</div>
@@ -1374,7 +1516,7 @@
   </section>
 
   <!-- CONTACT SECTION -->
-  <section class="section-alt" id="contact">
+  <section id="contact">
     <div class="section-inner">
       <div class="section-header">
         <div class="section-eyebrow">Direct Outreach</div>
@@ -1463,6 +1605,9 @@
       <div class="footer-links">
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#leadership">Leadership</a>
         <a href="https://github.com/rushiwagh9423" target="_blank" rel="noopener">GitHub</a>
         <a href="https://linkedin.com/in/rushikesh-wagh-63a086373" target="_blank" rel="noopener">LinkedIn</a>
       </div>
